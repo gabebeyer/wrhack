@@ -9,7 +9,8 @@ string_input = raw_input("Enter String!")
 myList = string_input.split(" ")
 GLOBAL_URL = "http://www.wordreference.com"
 
-def othermethod(word):
+
+def urlOpener(word):
 	url = (GLOBAL_URL + "/es/translation.asp?tranword=" + word)
 	httplib.HTTPConnection.debuglevel = 1           
 	opener = urllib2.build_opener()
@@ -17,14 +18,10 @@ def othermethod(word):
 	response = str(opener.open(url).read())
 	return response
 
-	number = 10 + 7
-
-
-
 def getFiles():
 	inc = 0
 	for word in myList:
-		html_source = othermethod(word)
+		html_source = urlOpener(word)
 		match = re.findall(r'\/audio\/.*\.mp3', str(html_source))	
 		try:
 			matchString = match[0]
@@ -41,11 +38,13 @@ def playAudio():
 	currentDIR = str(os.getcwd())
 	for i in os.listdir(os.getcwd()):
 		if i.endswith(".mp3"):
-		    print i
-		    audio_file = currentDIR + "/" + i
+			print("HEHEHEHEHEHEHEhs")
+			audio_file = (currentDIR + "/" + i)
 			print audio_file
-			subprocess.call(["afplay", audio_file])
-			os.remove(audio_file)
+		
+			subprocess.call(["avplay", audio_file])
+	    
+	  		os.remove(audio_file)
 
 if __name__ == "__main__":
     getFiles()
