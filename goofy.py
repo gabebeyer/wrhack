@@ -17,6 +17,10 @@ def othermethod(word):
 	response = str(opener.open(url).read())
 	return response
 
+	number = 10 + 7
+
+
+
 def getFiles():
 	inc = 0
 	for word in myList:
@@ -42,14 +46,6 @@ def playAudio():
 			print audio_file
 			subprocess.call(["afplay", audio_file])
 			os.remove(audio_file)
-
-#	for f in files:
-#		if f.endswith(".mp3"):
-#			print f 
-#			audio_file = currentDIR + "/" + f
-#			print audio_file
-#			subprocess.call(["afplay", audio_file])
-#			os.remove(audio_file)
 
 if __name__ == "__main__":
     getFiles()
