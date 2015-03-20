@@ -38,12 +38,16 @@ def playAudio():
 	currentDIR = str(os.getcwd())
 	for i in os.listdir(os.getcwd()):
 		if i.endswith(".mp3"):
-			print("HEHEHEHEHEHEHEhs")
 			audio_file = (currentDIR + "/" + i)
 			print audio_file
+
+			if os.name()[0] == "Linux":
 		
-			subprocess.call(["avplay", audio_file])
-	    
+				subprocess.call(["avplay", audio_file])
+			else:
+				
+				subprocess.call(["afplay", audio_fil])
+								    
 	  		os.remove(audio_file)
 
 if __name__ == "__main__":
